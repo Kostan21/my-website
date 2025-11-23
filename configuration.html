@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Управление конфигурациями - Информационная поддержка ПЖЦ ПО</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <h1><a href="index.html">Информационная поддержка ПЖЦ ПО</a></h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">Главная</a></li>
+                <li><a href="ci-cd.html" class="nav-link">CI/CD</a></li>
+                <li><a href="monitoring.html" class="nav-link">Мониторинг</a></li>
+                <li><a href="containerization.html" class="nav-link">Контейнеризация</a></li>
+                <li><a href="bug-tracking.html" class="nav-link">Баг-трекинг</a></li>
+                <li><a href="documentation.html" class="nav-link">Документирование</a></li>
+                <li><a href="devops.html" class="nav-link">DevOps</a></li>
+                <li><a href="configuration.html" class="nav-link">Конфигурации</a></li>
+                <li><a href="repositories.html" class="nav-link">Репозитории</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle" aria-label="Открыть меню">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main class="main">
+        <section class="page-header">
+            <div class="container">
+                <h1>Управление конфигурациями программного обеспечения</h1>
+                <p class="page-subtitle">Ansible, Terraform, Puppet, Chef и автоматизация инфраструктуры</p>
+            </div>
+        </section>
+
+        <section class="content">
+            <div class="container">
+                <article class="article">
+                    <h2>Infrastructure as Code (IaC)</h2>
+                    <p>Управление конфигурациями через код позволяет автоматизировать настройку инфраструктуры, обеспечивая воспроизводимость, версионность и контроль изменений.</p>
+                    
+                    <h3>Terraform</h3>
+                    <p>Terraform - инструмент для безопасного и эффективного построения, изменения и версионирования инфраструктуры.</p>
+                    
+                    <div class="code-example">
+                        <h4>Пример конфигурации Terraform:</h4>
+                        <pre><code># main.tf
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 4.0"
+    }
+  }
+}
+
+provider "aws" {
+  region = "us-west-2"
+}
+
+resource "aws_instance" "web" {
+  ami           = "ami-0c55b159cbfafe1d0"
+  instance_type = "t2.micro"
+
+  tags = {
+    Name = "WebServer"
+  }
+}
+
+resource "aws_security_group" "web" {
+  name = "web-sg"
+  
+  ingress {
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}</code></pre>
+                    </div>
+
+                    <h3>Ansible</h3>
+                    <p>Ansible - простой в использовании инструмент автоматизации, который использует YAML для описания конфигураций.</p>
+
+                    <div class="code-example">
+                        <h4>Пример Playbook Ansible:</h4>
+                        <pre><code>---
+- name: Configure web server
+  hosts: webservers
+  become: yes
+  vars:
+    http_port: 80
+    max_clients: 200
+  
+  tasks:
+    - name: Ensure Apache is installed
+      apt:
+        name: apache2
+        state: present
+    
+    - name: Ensure Apache is running
+      service:
+        name: apache2
+        state: started
+        enabled: yes
+    
+    - name: Configure virtual host
+      template:
+        src: templates/vhost.conf.j2
+        dest: /etc/apache2/sites-available/000-default.conf
+      notify:
+        - Restart apache
+  
+  handlers:
+    - name: Restart apache
+      service:
+        name: apache2
+        state: restarted</code></pre>
+                    </div>
+
+                    <h3>Сравнение инструментов управления конфигурациями</h3>
+                    <div class="advantages">
+                        <div class="advantage">
+                            <h4>Terraform</h4>
+                            <p>Декларативный подход, оркестрация облачных ресурсов</p>
+                        </div>
+                        <div class="advantage">
+                            <h4>Ansible</h4>
+                            <p>Императивный подход, конфигурация существующих систем</p>
+                        </div>
+                        <div class="advantage">
+                            <h4>Puppet</h4>
+                            <p>Декларативный DSL, модель клиент-сервер</p>
+                        </div>
+                        <div class="advantage">
+                            <h4>Chef</h4>
+                            <p>Императивный Ruby DSL, гибкость настройки</p>
+                        </div>
+                    </div>
+
+                    <h3>Принципы управления конфигурациями</h3>
+                    <ul>
+                        <li><strong>Идемпотентность</strong> - многократное применение дает одинаковый результат</li>
+                        <li><strong>Декларативность</strong> - описание желаемого состояния, а не шагов</li>
+                        <li><strong>Версионность</strong> - контроль изменений через системы контроля версий</li>
+                        <li><strong>Тестируемость</strong> - возможность проверки конфигураций</li>
+                        <li><strong>Модульность</strong> - переиспользование компонентов</li>
+                    </ul>
+
+                    <h3>Информационная поддержка через управление конфигурациями</h3>
+                    <p>Системы управления конфигурациями предоставляют:</p>
+                    <ul>
+                        <li><strong>Единый источник истины</strong> для инфраструктуры</li>
+                        <li><strong>Историю изменений</strong> конфигураций</li>
+                        <li><strong>Автоматическую документацию</strong> состояния систем</li>
+                        <li><strong>Воспроизводимость</strong> окружений</li>
+                        <li><strong>Быстрое восстановление</strong> после сбоев</li>
+                    </ul>
+
+                    <h3>Best Practices</h3>
+                    <div class="feature-list">
+                        <div class="feature">
+                            <h4>Рекомендации по использованию:</h4>
+                            <ul>
+                                <li>Хранить конфигурации в Git</li>
+                                <li>Использовать code review для изменений</li>
+                                <li>Тестировать конфигурации в CI/CD</li>
+                                <li>Разделять конфигурации по окружениям</li>
+                                <li>Использовать секреты management (Vault, AWS Secrets Manager)</li>
+                                <li>Внедрять политики безопасности через код</li>
+                            </ul>
+                        </div>
+                    </div>
+                </article>
+
+                <nav class="page-navigation">
+                    <a href="devops.html" class="nav-btn">← DevOps</a>
+                    <a href="repositories.html" class="nav-btn">Репозитории →</a>
+                </nav>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025г. Ткачев К.А. ИТ-441м "Информационная поддержка процессов жизненного цикла программных систем"</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

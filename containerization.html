@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контейнеризация - Информационная поддержка ПЖЦ ПО</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <h1><a href="index.html">Информационная поддержка ПЖЦ ПО</a></h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">Главная</a></li>
+                <li><a href="ci-cd.html" class="nav-link">CI/CD</a></li>
+                <li><a href="monitoring.html" class="nav-link">Мониторинг</a></li>
+                <li><a href="containerization.html" class="nav-link">Контейнеризация</a></li>
+                <li><a href="bug-tracking.html" class="nav-link">Баг-трекинг</a></li>
+                <li><a href="documentation.html" class="nav-link">Документирование</a></li>
+                <li><a href="devops.html" class="nav-link">DevOps</a></li>
+                <li><a href="configuration.html" class="nav-link">Конфигурации</a></li>
+                <li><a href="repositories.html" class="nav-link">Репозитории</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle" aria-label="Открыть меню">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main class="main">
+        <section class="page-header">
+            <div class="container">
+                <h1>Информация в системах контейнеризации и оркестрации</h1>
+                <p class="page-subtitle">Docker, Kubernetes и управление контейнеризованными приложениями</p>
+            </div>
+        </section>
+
+        <section class="content">
+            <div class="container">
+                <article class="article">
+                    <h2>Контейнеризация в современной разработке</h2>
+                    <p>Контейнеризация revolutionized подходы к разработке и развертыванию приложений, предоставляя изолированные среды выполнения и стандартизирую процессы доставки ПО.</p>
+                    
+                    <h3>Docker</h3>
+                    <p>Docker - платформа для разработки, доставки и запуска приложений в контейнерах.</p>
+                    
+                    <div class="code-example">
+                        <h4>Пример Dockerfile:</h4>
+                        <pre><code>FROM node:18-alpine
+
+WORKDIR /app
+
+COPY package*.json ./
+RUN npm ci --only=production
+
+COPY . .
+
+EXPOSE 3000
+
+USER node
+
+CMD ["node", "src/index.js"]</code></pre>
+                    </div>
+
+                    <h3>Kubernetes</h3>
+                    <p>Kubernetes - система оркестрации контейнеров для автоматизации развертывания, масштабирования и управления приложениями.</p>
+
+                    <div class="code-example">
+                        <h4>Пример Deployment в Kubernetes:</h4>
+                        <pre><code>apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: web-app
+  template:
+    metadata:
+      labels:
+        app: web-app
+    spec:
+      containers:
+      - name: web-app
+        image: my-registry/web-app:v1.2.3
+        ports:
+        - containerPort: 3000
+        env:
+        - name: DATABASE_URL
+          valueFrom:
+            secretKeyRef:
+              name: db-secret
+              key: url</code></pre>
+                    </div>
+
+                    <h3>Преимущества контейнеризации</h3>
+                    <div class="advantages">
+                        <div class="advantage">
+                            <h4>Изоляция</h4>
+                            <p>Каждое приложение работает в изолированном окружении</p>
+                        </div>
+                        <div class="advantage">
+                            <h4>Переносимость</h4>
+                            <p>Контейнеры работают одинаково на любой системе</p>
+                        </div>
+                        <div class="advantage">
+                            <h4>Масштабируемость</h4>
+                            <p>Легкое горизонтальное масштабирование приложений</p>
+                        </div>
+                        <div class="advantage">
+                            <h4>Эффективность</h4>
+                            <p>Минимальные накладные расходы по сравнению с ВМ</p>
+                        </div>
+                    </div>
+
+                    <h3>Информационная поддержка через контейнеризацию</h3>
+                    <ul>
+                        <li><strong>Логи</strong> - централизованный сбор логов контейнеров</li>
+                        <li><strong>Метрики</strong> - мониторинг ресурсов и производительности</li>
+                        <li><strong>Трассировка</strong> - отслеживание запросов в распределенных системах</li>
+                        <li><strong>Конфигурация</strong> - управление настройками через ConfigMaps и Secrets</li>
+                        <li><strong>Состояние</strong> - отслеживание здоровья и готовности приложений</li>
+                    </ul>
+
+                    <h3>Docker Compose для разработки</h3>
+                    <div class="code-example">
+                        <h4>docker-compose.yml:</h4>
+                        <pre><code>version: '3.8'
+services:
+  web:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - DATABASE_URL=postgresql://user:pass@db:5432/app
+    depends_on:
+      - db
+
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: app
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:</code></pre>
+                    </div>
+                </article>
+
+                <nav class="page-navigation">
+                    <a href="monitoring.html" class="nav-btn">← Мониторинг</a>
+                    <a href="bug-tracking.html" class="nav-btn">Баг-трекинг →</a>
+                </nav>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025г. Ткачев К.А. ИТ-441м "Информационная поддержка процессов жизненного цикла программных систем"</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

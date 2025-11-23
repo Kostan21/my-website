@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Репозитории артефактов - Информационная поддержка ПЖЦ ПО</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <h1><a href="index.html">Информационная поддержка ПЖЦ ПО</a></h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">Главная</a></li>
+                <li><a href="ci-cd.html" class="nav-link">CI/CD</a></li>
+                <li><a href="monitoring.html" class="nav-link">Мониторинг</a></li>
+                <li><a href="containerization.html" class="nav-link">Контейнеризация</a></li>
+                <li><a href="bug-tracking.html" class="nav-link">Баг-трекинг</a></li>
+                <li><a href="documentation.html" class="nav-link">Документирование</a></li>
+                <li><a href="devops.html" class="nav-link">DevOps</a></li>
+                <li><a href="configuration.html" class="nav-link">Конфигурации</a></li>
+                <li><a href="repositories.html" class="nav-link">Репозитории</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle" aria-label="Открыть меню">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main class="main">
+        <section class="page-header">
+            <div class="container">
+                <h1>Репозитории артефактов и управление зависимостями</h1>
+                <p class="page-subtitle">Nexus, Artifactory и системы хранения бинарных артефактов</p>
+            </div>
+        </section>
+
+        <section class="content">
+            <div class="container">
+                <article class="article">
+                    <h2>Управление бинарными артефактами</h2>
+                    <p>Репозитории артефактов обеспечивают централизованное хранение, версионирование и распространение бинарных компонентов, необходимых для сборки и развертывания приложений.</p>
+                    
+                    <h3>Nexus Repository</h3>
+                    <p>Nexus Repository - решение от Sonatype для управления артефактами, поддерживающее множество форматов пакетов.</p>
+                    
+                    <div class="feature-list">
+                        <div class="feature">
+                            <h4>Поддерживаемые форматы Nexus:</h4>
+                            <ul>
+                                <li>Maven (Java)</li>
+                                <li>npm (JavaScript)</li>
+                                <li>Docker</li>
+                                <li>PyPI (Python)</li>
+                                <li>NuGet (.NET)</li>
+                                <li>RubyGems</li>
+                                <li>Helm Charts</li>
+                                <li>Raw artifacts</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h3>JFrog Artifactory</h3>
+                    <p>Artifactory - универсальный репозиторий артефактов от JFrog, предлагающий расширенные возможности для DevOps pipelines.</p>
+
+                    <div class="feature-list">
+                        <div class="feature">
+                            <h4>Возможности Artifactory:</h4>
+                            <ul>
+                                <li>Универсальная поддержка пакетов</li>
+                                <li>Advanced metadata management</li>
+                                <li>Integration with CI/CD tools</li>
+                                <li>Security scanning</li>
+                                <li>High availability</li>
+                                <li>Replication between instances</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h3>Типы репозиториев</h3>
+                    <div class="monitoring-types">
+                        <div class="type-card">
+                            <h4>Hosted</h4>
+                            <p>Локальные репозитории для собственных артефактов</p>
+                        </div>
+                        <div class="type-card">
+                            <h4>Proxy</h4>
+                            <p>Кэширующие репозитории для внешних источников</p>
+                        </div>
+                        <div class="type-card">
+                            <h4>Group</h4>
+                            <p>Агрегация нескольких репозиториев в один endpoint</p>
+                        </div>
+                    </div>
+
+                    <h3>Управление зависимостями</h3>
+                    <p>Современные системы управления зависимостями обеспечивают:</p>
+                    
+                    <div class="advantages">
+                        <div class="advantage">
+                            <h4>Версионность</h4>
+                            <p>Четкое управление версиями зависимостей</p>
+                        </div>
+                        <div class="advantage">
+                            <h4>Воспроизводимость</h4>
+                            <p>Гарантия одинаковых версий зависимостей</p>
+                        </div>
+                        <div class="advantage">
+                            <h4>Безопасность</h4>
+                            <p>Сканирование уязвимостей в зависимостях</p>
+                        </div>
+                        <div class="advantage">
+                            <h4>Производительность</h4>
+                            <p>Кэширование и локальное хранение</p>
+                        </div>
+                    </div>
+
+                    <h3>Интеграция с CI/CD</h3>
+                    <p>Репозитории артефактов тесно интегрируются с системами непрерывной интеграции:</p>
+                    
+                    <div class="code-example">
+                        <h4>Пример публикации артефактов в Jenkins:</h4>
+                        <pre><code>pipeline {
+    agent any
+    
+    stages {
+        stage('Build') {
+            steps {
+                sh 'mvn clean compile'
+            }
+        }
+        
+        stage('Test') {
+            steps {
+                sh 'mvn test'
+            }
+        }
+        
+        stage('Publish') {
+            steps {
+                // Публикация в Nexus
+                sh 'mvn deploy -DaltDeploymentRepository=nexus::default::http://nexus.company.com/repository/maven-releases/'
+                
+                // Публикация Docker образа
+                sh 'docker push registry.company.com/my-app:${BUILD_NUMBER}'
+            }
+        }
+    }
+}</code></pre>
+                    </div>
+
+                    <h3>Безопасность и compliance</h3>
+                    <p>Современные репозитории обеспечивают:</p>
+                    <ul>
+                        <li><strong>Scanning уязвимостей</strong> - автоматическое обнаружение CVE</li>
+                        <li><strong>License compliance</strong> - контроль лицензий зависимостей</li>
+                        <li><strong>Access control</strong> - разграничение прав доступа</li>
+                        <li><strong>Audit trail</strong> - журналирование операций</li>
+                        <li><strong>Quality gates</strong> - проверки перед публикацией</li>
+                    </ul>
+
+                    <h3>Best Practices</h3>
+                    <div class="feature-list">
+                        <div class="feature">
+                            <h4>Рекомендации по использованию:</h4>
+                            <ul>
+                                <li>Использовать semantic versioning</li>
+                                <li>Настроить cleanup policies для старых артефактов</li>
+                                <li>Внедрить security scanning в pipeline</li>
+                                <li>Использовать repository promotion</li>
+                                <li>Настроить high availability</li>
+                                <li>Регулярно делать бэкапы</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h3>Информационная поддержка через репозитории</h3>
+                    <p>Репозитории артефактов предоставляют ценную информацию для:</p>
+                    <ul>
+                        <li><strong>Аудита</strong> - кто, когда и что опубликовал</li>
+                        <li><strong>Трассируемости</strong> - от артефакта к исходному коду</li>
+                        <li><strong>Анализа зависимостей</strong> - что используется в проектах</li>
+                        <li><strong>Управления рисками</strong> - уязвимости и лицензии</li>
+                        <li><strong>Планирования</strong> - тренды использования и роста</li>
+                    </ul>
+                </article>
+
+                <nav class="page-navigation">
+                    <a href="configuration.html" class="nav-btn">← Конфигурации</a>
+                    <a href="index.html" class="nav-btn">На главную →</a>
+                </nav>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025г. Ткачев К.А. ИТ-441м "Информационная поддержка процессов жизненного цикла программных систем"</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

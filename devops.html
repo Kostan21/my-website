@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevOps процессы - Информационная поддержка ПЖЦ ПО</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <h1><a href="index.html">Информационная поддержка ПЖЦ ПО</a></h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">Главная</a></li>
+                <li><a href="ci-cd.html" class="nav-link">CI/CD</a></li>
+                <li><a href="monitoring.html" class="nav-link">Мониторинг</a></li>
+                <li><a href="containerization.html" class="nav-link">Контейнеризация</a></li>
+                <li><a href="bug-tracking.html" class="nav-link">Баг-трекинг</a></li>
+                <li><a href="documentation.html" class="nav-link">Документирование</a></li>
+                <li><a href="devops.html" class="nav-link">DevOps</a></li>
+                <li><a href="configuration.html" class="nav-link">Конфигурации</a></li>
+                <li><a href="repositories.html" class="nav-link">Репозитории</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle" aria-label="Открыть меню">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main class="main">
+        <section class="page-header">
+            <div class="container">
+                <h1>Информационная поддержка DevOps-процессов</h1>
+                <p class="page-subtitle">Интеграция разработки и эксплуатации, автоматизация и непрерывное улучшение</p>
+            </div>
+        </section>
+
+        <section class="content">
+            <div class="container">
+                <article class="article">
+                    <h2>DevOps как культура и практика</h2>
+                    <p>DevOps представляет собой культурное и профессиональное движение, которое фокусируется на построении и эксплуатации систем с высокой скоростью изменений, объединяя разработку и эксплуатацию.</p>
+                    
+                    <h3>Основные принципы DevOps</h3>
+                    <div class="feature-list">
+                        <div class="feature">
+                            <h4>Культурные аспекты:</h4>
+                            <ul>
+                                <li>Совместная ответственность за продукт</li>
+                                <li>Сквозная автоматизация процессов</li>
+                                <li>Непрерывное обучение и улучшение</li>
+                                <li>Измерение и сбор метрик</li>
+                                <li>Создание культуры доверия</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h3>Информационные потоки в DevOps</h3>
+                    <p>DevOps реализует три основных информационных потока:</p>
+                    
+                    <div class="monitoring-types">
+                        <div class="type-card">
+                            <h4>Поток 1: Left to Right</h4>
+                            <p>От разработки к эксплуатации - доставка ценности пользователям</p>
+                        </div>
+                        <div class="type-card">
+                            <h4>Поток 2: Right to Left</h4>
+                            <p>Обратная связь от эксплуатации к разработке</p>
+                        </div>
+                        <div class="type-card">
+                            <h4>Поток 3: Continuous Learning</h4>
+                            <p>Постоянное обучение и совершенствование</p>
+                        </div>
+                    </div>
+
+                    <h3>Ключевые метрики DevOps</h3>
+                    <div class="advantages">
+                        <div class="advantage">
+                            <h4>Lead Time</h4>
+                            <p>Время от коммита до развертывания в production</p>
+                        </div>
+                        <div class="advantage">
+                            <h4>Deployment Frequency</h4>
+                            <p>Частота развертываний в production</p>
+                        </div>
+                        <div class="advantage">
+                            <h4>Mean Time to Recovery (MTTR)</h4>
+                            <p>Среднее время восстановления после инцидента</p>
+                        </div>
+                        <div class="advantage">
+                            <h4>Change Failure Rate</h4>
+                            <p>Процент изменений, вызывающих инциденты</p>
+                        </div>
+                    </div>
+
+                    <h3>DevOps инструментарий</h3>
+                    <p>Современный стек DevOps включает:</p>
+                    
+                    <div class="code-example">
+                        <h4>Пример DevOps pipeline:</h4>
+                        <pre><code># Этапы DevOps пайплайна
+1. Plan        → Jira, Confluence
+2. Code        → Git, GitHub/GitLab
+3. Build       → Jenkins, GitLab CI
+4. Test        → Selenium, JUnit
+5. Release     → Docker, Helm
+6. Deploy      → Kubernetes, Ansible
+7. Operate     → Prometheus, Grafana
+8. Monitor     → ELK Stack, New Relic</code></pre>
+                    </div>
+
+                    <h3>Site Reliability Engineering (SRE)</h3>
+                    <p>SRE - подход к эксплуатации систем, который применяет аспекты software engineering к инфраструктурным задачам.</p>
+                    
+                    <div class="feature-list">
+                        <div class="feature">
+                            <h4>Принципы SRE:</h4>
+                            <ul>
+                                <li>Service Level Objectives (SLOs)</li>
+                                <li>Error Budgets</li>
+                                <li>Elimination of Toil</li>
+                                <li>Automation</li>
+                                <li>Release Engineering</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h3>Информационная поддержка через DevOps</h3>
+                    <ul>
+                        <li><strong>Единый источник истины</strong> - централизованное хранение конфигураций</li>
+                        <li><strong>Сквозная трассируемость</strong> - отслеживание изменений от коммита до production</li>
+                        <li><strong>Автоматизированная отчетность</strong> - метрики и дашборды</li>
+                        <li><strong>Коллаборация</strong> - общие инструменты для разработки и эксплуатации</li>
+                        <li><strong>Непрерывная обратная связь</strong> - мониторинг и alerting</li>
+                    </ul>
+
+                    <h3>DevOps Maturity Model</h3>
+                    <p>Модель зрелости DevOps помогает оценить текущее состояние и определить направления развития:</p>
+                    <ol>
+                        <li><strong>Initial</strong> - ручные процессы, разрозненные инструменты</li>
+                        <li><strong>Repeatable</strong> - базовая автоматизация, стандартизация</li>
+                        <li><strong>Defined</strong> - формализованные процессы, интеграция инструментов</li>
+                        <li><strong>Managed</strong> - измерение метрик, управление качеством</li>
+                        <li><strong>Optimizing</strong> - непрерывное улучшение, инновации</li>
+                    </ol>
+                </article>
+
+                <nav class="page-navigation">
+                    <a href="documentation.html" class="nav-btn">← Документирование</a>
+                    <a href="configuration.html" class="nav-btn">Конфигурации →</a>
+                </nav>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025г. Ткачев К.А. ИТ-441м "Информационная поддержка процессов жизненного цикла программных систем"</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

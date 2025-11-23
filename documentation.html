@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Документирование ПО - Информационная поддержка ПЖЦ ПО</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <h1><a href="index.html">Информационная поддержка ПЖЦ ПО</a></h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">Главная</a></li>
+                <li><a href="ci-cd.html" class="nav-link">CI/CD</a></li>
+                <li><a href="monitoring.html" class="nav-link">Мониторинг</a></li>
+                <li><a href="containerization.html" class="nav-link">Контейнеризация</a></li>
+                <li><a href="bug-tracking.html" class="nav-link">Баг-трекинг</a></li>
+                <li><a href="documentation.html" class="nav-link">Документирование</a></li>
+                <li><a href="devops.html" class="nav-link">DevOps</a></li>
+                <li><a href="configuration.html" class="nav-link">Конфигурации</a></li>
+                <li><a href="repositories.html" class="nav-link">Репозитории</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle" aria-label="Открыть меню">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main class="main">
+        <section class="page-header">
+            <div class="container">
+                <h1>Средства документирования программного обеспечения</h1>
+                <p class="page-subtitle">Confluence, Notion, Wiki-системы и управление технической документацией</p>
+            </div>
+        </section>
+
+        <section class="content">
+            <div class="container">
+                <article class="article">
+                    <h2>Значение документации в жизненном цикле ПО</h2>
+                    <p>Качественная документация является критически важным элементом успешной разработки и сопровождения программного обеспечения, обеспечивая передачу знаний и стандартизацию процессов.</p>
+                    
+                    <h3>Confluence</h3>
+                    <p>Confluence - корпоративная Wiki-система от Atlassian, тесно интегрированная с Jira и другими инструментами разработки.</p>
+                    
+                    <div class="feature-list">
+                        <div class="feature">
+                            <h4>Преимущества Confluence:</h4>
+                            <ul>
+                                <li>Глубокая интеграция с Jira</li>
+                                <li>Шаблоны для различных типов документации</li>
+                                <li>Мощные возможности совместной работы</li>
+                                <li>Версионность и история изменений</li>
+                                <li>Расширения через макросы</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h3>Notion</h3>
+                    <p>Notion - универсальная платформа для ведения заметок, управления проектами и создания баз знаний.</p>
+
+                    <div class="feature-list">
+                        <div class="feature">
+                            <h4>Возможности Notion:</h4>
+                            <ul>
+                                <li>Гибкие блоки контента</li>
+                                <li>Базы данных и реляционные связи</li>
+                                <li>Шаблоны для технической документации</li>
+                                <li>API для интеграций</li>
+                                <li>Реализация принципа "все в одном"</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <h3>Типы технической документации</h3>
+                    <div class="monitoring-types">
+                        <div class="type-card">
+                            <h4>Техническое задание</h4>
+                            <p>Формальное описание требований к системе</p>
+                        </div>
+                        <div class="type-card">
+                            <h4>Архитектурная документация</h4>
+                            <p>Описание структуры и компонентов системы</p>
+                        </div>
+                        <div class="type-card">
+                            <h4>API документация</h4>
+                            <p>Описание endpoints и методов API</p>
+                        </div>
+                        <div class="type-card">
+                            <h4>Руководства пользователя</h4>
+                            <p>Инструкции по использованию системы</p>
+                        </div>
+                    </div>
+
+                    <h3>Автоматизация документирования</h3>
+                    <p>Современные подходы к документированию включают автоматизацию:</p>
+                    
+                    <div class="code-example">
+                        <h4>Пример документации API с Swagger/OpenAPI:</h4>
+                        <pre><code>openapi: 3.0.0
+info:
+  title: User API
+  version: 1.0.0
+paths:
+  /users:
+    get:
+      summary: Get all users
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        email:
+          type: string</code></pre>
+                    </div>
+
+                    <h3>Принципы качественной документации</h3>
+                    <ul>
+                        <li><strong>Актуальность</strong> - документация должна соответствовать текущему состоянию системы</li>
+                        <li><strong>Доступность</strong> - легкий поиск и навигация</li>
+                        <li><strong>Полнота</strong> - охват всех аспектов системы</li>
+                        <li><strong>Ясность</strong> - понятный и структурированный язык</li>
+                        <li><strong>Поддерживаемость</strong> - легкость внесения изменений</li>
+                    </ul>
+
+                    <h3>Интеграция документации в процессы разработки</h3>
+                    <p>Эффективные практики включения документации в жизненный цикл:</p>
+                    <ul>
+                        <li>Documentation as Code - хранение документации вместе с кодом</li>
+                        <li>Автоматическая генерация документации из комментариев</li>
+                        <li>Code review для документации</li>
+                        <li>Верификация актуальности документации в CI/CD</li>
+                        <li>Метрики качества и покрытия документацией</li>
+                    </ul>
+                </article>
+
+                <nav class="page-navigation">
+                    <a href="bug-tracking.html" class="nav-btn">← Баг-трекинг</a>
+                    <a href="devops.html" class="nav-btn">DevOps →</a>
+                </nav>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025г. Ткачев К.А. ИТ-441м "Информационная поддержка процессов жизненного цикла программных систем"</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CI/CD системы - Информационная поддержка ПЖЦ ПО</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-brand">
+                <h1><a href="index.html">Информационная поддержка ПЖЦ ПО</a></h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">Главная</a></li>
+                <li><a href="ci-cd.html" class="nav-link">CI/CD</a></li>
+                <li><a href="monitoring.html" class="nav-link">Мониторинг</a></li>
+                <li><a href="containerization.html" class="nav-link">Контейнеризация</a></li>
+                <li><a href="bug-tracking.html" class="nav-link">Баг-трекинг</a></li>
+                <li><a href="documentation.html" class="nav-link">Документирование</a></li>
+                <li><a href="devops.html" class="nav-link">DevOps</a></li>
+                <li><a href="configuration.html" class="nav-link">Конфигурации</a></li>
+                <li><a href="repositories.html" class="nav-link">Репозитории</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle" aria-label="Открыть меню">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <main class="main">
+        <section class="page-header">
+            <div class="container">
+                <h1>Системы CI/CD как средство информационной поддержки</h1>
+                <p class="page-subtitle">GitHub Actions, GitLab CI и другие инструменты непрерывной интеграции и доставки</p>
+            </div>
+        </section>
+
+        <section class="content">
+            <div class="container">
+                <article class="article">
+                    <h2>Введение в CI/CD</h2>
+                    <p>Continuous Integration (Непрерывная интеграция) и Continuous Delivery (Непрерывная доставка) являются ключевыми практиками в современной разработке ПО, обеспечивающими автоматизацию процессов сборки, тестирования и развертывания.</p>
+                    
+                    <h3>Основные принципы CI/CD</h3>
+                    <ul>
+                        <li><strong>Непрерывная интеграция</strong> - регулярное слияние кодовых изменений в общую ветку</li>
+                        <li><strong>Непрерывная доставка</strong> - автоматическое развертывание готового кода в среды</li>
+                        <li><strong>Непрерывное развертывание</strong> - автоматический вывод изменений в production</li>
+                    </ul>
+
+                    <h3>GitHub Actions</h3>
+                    <p>GitHub Actions предоставляет мощную платформу для автоматизации workflows непосредственно в репозитории GitHub.</p>
+                    
+                    <div class="code-example">
+                        <h4>Пример workflow для Node.js приложения:</h4>
+                        <pre><code>name: Node.js CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '18'
+    - run: npm install
+    - run: npm test
+    - run: npm run build</code></pre>
+                    </div>
+
+                    <h3>GitLab CI</h3>
+                    <p>GitLab CI/CD является встроенным решением в GitLab, предоставляющим мощные возможности для pipeline-ов.</p>
+                    
+                    <div class="code-example">
+                        <h4>Пример .gitlab-ci.yml:</h4>
+                        <pre><code>stages:
+  - test
+  - build
+  - deploy
+
+unit_tests:
+  stage: test
+  script:
+    - npm install
+    - npm test
+
+build_image:
+  stage: build
+  script:
+    - docker build -t my-app .
+  only:
+    - main
+
+deploy_staging:
+  stage: deploy
+  script:
+    - kubectl apply -f k8s/
+  environment: staging
+  only:
+    - main</code></pre>
+                    </div>
+
+                    <h3>Преимущества использования CI/CD</h3>
+                    <div class="advantages">
+                        <div class="advantage">
+                            <h4>Раннее обнаружение ошибок</h4>
+                            <p>Автоматическое тестирование при каждом коммите</p>
+                        </div>
+                        <div class="advantage">
+                            <h4>Скорость доставки</h4>
+                            <p>Сокращение времени между разработкой и развертыванием</p>
+                        </div>
+                        <div class="advantage">
+                            <h4>Качество кода</h4>
+                            <p>Автоматизированные проверки качества и безопасности</p>
+                        </div>
+                    </div>
+
+                    <h3>Информационная поддержка через CI/CD</h3>
+                    <p>CI/CD системы предоставляют ценную информацию о:</p>
+                    <ul>
+                        <li>Статусе сборок и тестов</li>
+                        <li>Метриках качества кода</li>
+                        <li>Результатах security scanning</li>
+                        <li>Производительности приложения</li>
+                        <li>Истории развертываний</li>
+                    </ul>
+                </article>
+
+                <nav class="page-navigation">
+                    <a href="index.html" class="nav-btn">← На главную</a>
+                    <a href="monitoring.html" class="nav-btn">Мониторинг →</a>
+                </nav>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025г. Ткачев К.А. ИТ-441м "Информационная поддержка процессов жизненного цикла программных систем"</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
